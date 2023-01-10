@@ -26,17 +26,15 @@ jobs:
       
       - name: Build and Publish
         run: |
-          docker buildx build \
-            --push \
-            --platform linux/amd64, linux/arm/v7 . \
-            -t ghcr.io/2022-4400-exp/4433-go-helloworld-2:${{ github.sha }} --push
+          docker buildx build --platform linux/amd64,linux/arm/v7 . -t ghcr.io/2022-4400-exp/4433-go-helloworld-2:${{ github.sha }} --push
 
       - name: Update manifest image tag
         id: update-image-tag
         continue-on-error: true
         run: |
-          yq eval '.spec.template.spec.containers[0].image= "ghcr.io/2022-4400-exp/4433-go-helloworld-2:"+env(GITHUB_SHA)' -i ./manifest/deployment.yaml
+          yq eval '.spec.template.spec.containers[0].image = "ghcr.io/2022-4400-exp/4433-go-helloworld-2:"+env(GITHUB_SHA)' -i ./manifest/deployment.yaml
           git diff --name-only --exit-code
+
 
 
       - name: Commit/Push manifest
