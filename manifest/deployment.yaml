@@ -6,7 +6,7 @@ metadata:
   name: go-helloworld-2
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: go-helloworld-2
   template:
@@ -15,5 +15,5 @@ spec:
         app: go-helloworld-2
     spec:
       containers:
-      - image: ghcr.io/2022-4400-exp/4433-go-helloworld-2:5e189dfbde84fa1d9819b7b8fbe4d70509258ed8@sha256:fbe6b5a93b94a57e8ab5931b36b20e2ffd6bdd31fe35d5abb6e64716eab46e63
-        name: go-helloworld-2
+        - image: ghcr.io/2022-4400-exp/4433-go-helloworld-2:88174b7fc7b6ad1339b3c43e3e20f8d923a15134
+          name: go-helloworld-2
